@@ -171,20 +171,33 @@ The model predicts all the signs correctly, therefore the accuracy on these new 
 
 #### 3. Describe how certain the model is when predicting on each of the five new images by looking at the softmax probabilities for each prediction. Provide the top 5 softmax probabilities for each image along with the sign type of each probability. (OPTIONAL: as described in the "Stand Out Suggestions" part of the rubric, visualizations can also be provided such as bar charts)
 
-The code for making predictions on my final model is located in the 11th cell of the Ipython notebook.
+For every image in the eight sample images, the model predicts the right label with high probability nearly to be 1.
 
-For the first image, the model is relatively sure that this is a stop sign (probability of 0.6), and the image does contain a stop sign. The top five soft max probabilities were
+The top five soft max probabilities were
+
+image 1 :
 
 | Probability         	|     Prediction	        					| 
 |:---------------------:|:---------------------------------------------:| 
-| .60         			| Stop sign   									| 
-| .20     				| U-turn 										|
-| .05					| Yield											|
-| .04	      			| Bumpy Road					 				|
-| .01				    | Slippery Road      							|
+| 1         			| Stop sign   									| 
+| 1.53070765e-18    				| U-turn 										|
+| 2.50720629e-25					| Yield											|
+| 8.10963956e-27	      			| Bumpy Road					 				|
+| 6.01638735e-30			    | Slippery Road      							|
 
+(image 2-4 and 6-8 have nearly the same top five soft max probabilities, so they are not listed here)
 
-For the second image ... 
+Special attention should be paid to image 5. As there is a pole in front of the sign, 
+
+image 5:
+
+| Probability         	|     Prediction	        					| 
+|:---------------------:|:---------------------------------------------:| 
+| 9.99986172e-01        			| Stop sign   									| 
+| 1.38819150e-05    				| U-turn 										|
+| 6.52720722e-09					| Yield											|
+| 6.58945066e-13	      			| Bumpy Road					 				|
+|  6.84621901e-14			    | Slippery Road      							|
 
 ### (Optional) Visualizing the Neural Network (See Step 4 of the Ipython notebook for more details)
 #### 1. Discuss the visual output of your trained network's feature maps. What characteristics did the neural network use to make classifications?
