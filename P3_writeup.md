@@ -22,6 +22,8 @@ The goals / steps of this project are the following:
 [image3]: ./images_output/grayscale.png "Grayscaling"
 [image4]: ./images_output/data_augmentation.png "data augmentation"
 [image5]: ./images_output/tested_signs.png "Traffic Sign sample"
+[image6]: ./images_output/conv1.png "conv1"
+[image7]: ./images_output/conv2.png "conv2"
 
 ## Rubric Points
 ### Here I will consider the [rubric points](https://review.udacity.com/#!/rubrics/481/view) individually and describe how I addressed each point in my implementation.  
@@ -179,27 +181,34 @@ image 1 :
 
 | Probability         	|     Prediction	        					| 
 |:---------------------:|:---------------------------------------------:| 
-| 1         			| Stop sign   									| 
-| 1.53070765e-18    				| U-turn 										|
-| 2.50720629e-25					| Yield											|
-| 8.10963956e-27	      			| Bumpy Road					 				|
-| 6.01638735e-30			    | Slippery Road      							|
+| 1         			| Double curve  									| 
+| 1.53070765e-18    				| Right-of-way at the next intersection										|
+| 2.50720629e-25					| Keep right								|
+| 8.10963956e-27	      			|General caution			 				|
+| 6.01638735e-30			    | Turn left ahead					|
 
 (image 2-4 and 6-8 have nearly the same top five soft max probabilities, so they are not listed here)
 
-Special attention should be paid to image 5. As there is a pole in front of the sign, 
+Special attention should be paid to image 5. As there is a pole in front of the sign, the top softmax probability (9.99986172e-01) is not as large as the other sample images, though still large enough to predict the right label.
 
 image 5:
 
 | Probability         	|     Prediction	        					| 
 |:---------------------:|:---------------------------------------------:| 
-| 9.99986172e-01        			| Stop sign   									| 
-| 1.38819150e-05    				| U-turn 										|
-| 6.52720722e-09					| Yield											|
-| 6.58945066e-13	      			| Bumpy Road					 				|
-|  6.84621901e-14			    | Slippery Road      							|
+| 9.99986172e-01        			| Pedestrians 									| 
+| 1.38819150e-05    				| General caution									|
+| 6.52720722e-09					| Right-of-way at the next intersection									|
+| 6.58945066e-13	      			| Double curve	 				|
+|  6.84621901e-14			    | Dangerous curve to the left   							|
 
 ### (Optional) Visualizing the Neural Network (See Step 4 of the Ipython notebook for more details)
 #### 1. Discuss the visual output of your trained network's feature maps. What characteristics did the neural network use to make classifications?
 
+I used image 3 to generate the feature maps.
 
+The feature map for conv1:
+
+![alt text][image6]
+
+The feature map for conv2:
+![alt text][image7]
