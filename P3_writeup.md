@@ -54,7 +54,7 @@ One image in the train set is:
 
 ![alt text][image1]
 
-The following image shows the distribution of classes in the training, validation and test set:
+The following image shows the distribution of classes in the training, validation and test set. The distributions among the three sets are nearly the same, however with some small difference.
 
 ![alt text][image2]
 
@@ -62,17 +62,17 @@ The following image shows the distribution of classes in the training, validatio
 
 #### 1. Describe how you preprocessed the image data. What techniques were chosen and why did you choose these techniques? Consider including images showing the output of each preprocessing technique. Pre-processing refers to techniques such as converting to grayscale, normalization, etc. (OPTIONAL: As described in the "Stand Out Suggestions" part of the rubric, if you generated additional data for training, describe why you decided to generate additional data, how you generated the data, and provide example images of the additional data. Then describe the characteristics of the augmented training set like number of images in the set, number of images for each class, etc.)
 
-As a first step, I decided to convert the images to grayscale because this approach can reduce the parameter number in the first convolutional layer, thus save memory and reduce training time. Furthermore, the following experiments showed the grayscale images had better performance than the color image. 
+As a first step, I decided to convert the images to grayscale because this approach can reduce the number of parameters in the first convolutional layer, thus saving memory and reducing training time. Furthermore, the experiments showed the grayscale images had better performance than the color image. 
 
 Here is an example of a traffic sign image before and after grayscaling.
 
 ![alt text][image3]
 
-As a last step, I normalized the image data because normalization is a standard procedure for data preprocessing.
+As a last step, I normalized the image data because normalization is a standard procedure for data preprocessing in CNN.
 
 I decided to generate additional data because more data can help reduce overfitting and increase the overall prediction accuracy.
 
-To add more data to the the data set, I referred to [Yann Lecun's paper](http://yann.lecun.com/exdb/publis/pdf/sermanet-ijcnn-11.pdf) which is recommended above and use the following 3 image augmentation methods:
+To add more data to the the data set, I referred to [Yann Lecun's paper](http://yann.lecun.com/exdb/publis/pdf/sermanet-ijcnn-11.pdf) which is recommended above and used the following 3 image augmentation methods:
 
 * Translation (randomly translate the image left/right and up/down in the range of [-2, +2] pixels)
 * Rotation (randomly rotate the image in the range of [-10, +10] degrees)
@@ -110,7 +110,7 @@ My final model is a modified version of 2-stage LeNet-5 which consisted of the f
 
 #### 3. Describe how you trained your model. The discussion can include the type of optimizer, the batch size, number of epochs and any hyperparameters such as learning rate.
 
-To train the model, I used an AdamOptimizer with batch size=128, epochs=30, learning rate = 0.001, dropout keep probability=0.5
+To train the model, I used an AdamOptimizer with batch size=128, epochs=30, learning rate = 0.001, keep probability of the dropout layer=0.5
 
 #### 4. Describe the approach taken for finding a solution and getting the validation set accuracy to be at least 0.93. Include in the discussion the results on the training, validation and test sets and where in the code these were calculated. Your approach may have been an iterative process, in which case, outline the steps you took to get to the final solution and why you chose those steps. Perhaps your solution involved an already well known implementation or architecture. In this case, discuss why you think the architecture is suitable for the current problem.
 
@@ -119,12 +119,28 @@ My final model results were:
 * validation set accuracy of 0.989
 * test set accuracy of 0.968
 
-An iterative approach was chosen to improve the model:
-* What was the first architecture that was tried and why was it chosen?
-* What were some problems with the initial architecture?
-* How was the architecture adjusted and why was it adjusted? Typical adjustments could include choosing a different model architecture, adding or taking away layers (pooling, dropout, convolution, etc), using an activation function or changing the activation function. One common justification for adjusting an architecture would be due to overfitting or underfitting. A high accuracy on the training set but low accuracy on the validation set indicates over fitting; a low accuracy on both sets indicates under fitting.
-* Which parameters were tuned? How were they adjusted and why?
-* What are some of the important design choices and why were they chosen? For example, why might a convolution layer work well with this problem? How might a dropout layer help with creating a successful model?
+An iterative approach was chosen to improve the model, the following table shows the approach:
+
+|Data Preparation|Network Architecture|Learning Rate|Epochs|Validation Accuracy 
+| - | - | - | - | - |
+|color normalized images|6 conv(5 * 5), relu, 2 * 2 pooling(stride = 2)<br>16 conv(5 * 5), relu, 2 * 2 pooling(stride = 2)<br>Dense(120), relu, dropout(keep = 0.7)<br>Dense(84), relu, dropout(keep = 0.7)<br>Dense(43)|0.001|30|0.953|
+|gray normalized images|6 conv(5 * 5), relu, 2 * 2 pooling(stride = 2)<br>16 conv(5 * 5), relu, 2 * 2 pooling(stride = 2)<br>Dense(120), relu, dropout(keep = 0.7)<br>Dense(84), relu, dropout(keep = 0.7)<br>Dense(43)|0.001|30 | 0.953 |
+|gray normalized images|20 conv(3 * 3), relu, 2 * 2 pooling(stride = 2)<br>16 conv(3 * 3), relu, 2 * 2 pooling(stride = 2)<br>Dense(120), relu, dropout(keep = 0.7)<br>Dense(84), relu, dropout(keep = 0.7)<br>Dense(43)|0.001|30 | 0.958 |
+|color normalized images|20 conv(3 * 3), relu, 2 * 2 pooling(stride = 2)<br>16 conv(3 * 3), relu, 2 * 2 pooling(stride = 2)<br>Dense(120), relu, dropout(keep = 0.7)<br>Dense(84), relu, dropout(keep = 0.7)<br>Dense(43)|0.001|30 |0.953 |
+|6 x augmented gray normalized images|20 conv(3 * 3), relu, 2 * 2 pooling(stride = 2)<br>16 conv(3 * 3), relu, 2 * 2 pooling(stride = 2)<br>Dense(120), relu, dropout(keep = 0.5)<br>Dense(84), relu, dropout(keep = 0.5)<br>Dense(43)|0.001|30 | 0.970 |
+|6 x augmented gray normalized images|40 conv(3 * 3), relu, 2 * 2 pooling(stride = 2)<br>40 conv(3 * 3), relu, 2 * 2 pooling(stride = 2)<br>Dense(120), relu, dropout(keep = 0.5)<br>Dense(84), relu, dropout(keep = 0.5)<br>Dense(43)|0.001|30 | 0.980 |
+|9 x augmented gray normalized images|80 conv(3 * 3), relu, 2 * 2 pooling(stride = 2)<br>80 conv(3 * 3), relu, 2 * 2 pooling(stride = 2)<br>Dense(120), relu, dropout(keep = 0.5)<br>Dense(84), relu, dropout(keep = 0.5)<br>Dense(43)|0.001|30 | 0.983 |
+|9 x augmented gray normalized images|80 conv(3 * 3), relu, 2 * 2 pooling(stride = 2) <br>80 conv(3 * 3), relu, 2 * 2 pooling(stride = 2)<br>Dense(120), relu, dropout(keep = 0.5)<br>Dense(84), relu, dropout(keep = 0.5)<br>Dense(43)|0.0003| 50 | 0.981  |
+|6 x augmented gray normalized images|80 conv(5 * 5), relu, 2 * 2 pooling(stride = 2)<br>80 conv(5 * 5), relu, 2 * 2 pooling(stride = 2)<br>Dense(120), relu, dropout(keep = 0.5)<br>Dense(84), relu, dropout(keep = 0.5)<br>Dense(43)|0.001|30 | 0.975 |
+|9 x augmented gray normalized images|80 conv(5 * 5), relu, 2 * 2 pooling(stride = 2)<br>80 conv(5 * 5), relu, 2 * 2 pooling(stride = 2)<br>Dense(120), relu, dropout(keep = 0.5)<br>Dense(84), relu, dropout(keep = 0.5)<br>Dense(43)|0.001|30 | 0.989 |
+
+Explanations are:
+* As suggested by [Josh Tobin](http://josh-tobin.com/troubleshooting-deep-neural-networks.html), the LeNet with Convolution 5x5 and feature 6-16 (**the left and right numbers are the numbers of features at the first and second convolutional layers respectively**) was the first architecture that was tried. The original dataset was used without data augmentation and two preprocessing methods were tested. The normalization and gray normalization mthods achieved the same accuracy on the validation set to be 0.953. 
+* Then I changed the convolution to be 3x3 and features to be 20-16. Gray normalization method achieved 0.958 accuracy and normalization method achieved 0.953 accuracy. Gray normalization method had better performance, therefore I used this preprocessing method in the following experiments.
+* In the previous experiments,  the accuracy on the training set is high but the accuracy on the validation set is low, which indicates over fitting. To solve the problem of overfitting, I reduced the keep probability of dropout layer to be 0.5 and added data augmentation. 6x augmented gray normalized images with 20-16 features achieved 0.970 accuracy while the model with 40-40 features achieved 0.980 accuracy. It showed increasing the feature numbers as well as adding data augmentation can increase the validation accuracy.
+* Then I added more fake data into the training set. 9x augmented gray normalized images with 80-80 features achieved 0.983 accuracy. At this step, I modified the learning rate to be 0.0003 and epochs to be 50. This change in the hyperparameters led to the validation accuracy to be 0.981.
+* Finaly, I did experiments with Convolution 5x5 and features 80-80. 6x augmented gray normalized images achieved 0.975 accuracy and 9x 
+augmented gray normalized images achieved 0.989 accuracy. The model with 0.989 validation accuracy was selected to be the final model.
  
 ### Test a Model on New Images
 
