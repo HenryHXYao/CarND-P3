@@ -1,0 +1,2 @@
+model_checkpoint_path: "yaonet"
+all_model_checkpoint_paths: "yaonet"
