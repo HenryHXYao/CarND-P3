@@ -212,3 +212,5 @@ The feature map for conv1:
 
 The feature map for conv2:
 ![alt text][image7]
+
+The feature map for conv1 has some low level features like circle, arrow and etc. while the feature map for conv2 has high level features which are difficult to recognize what these features stand for. Therefore, the neural network use a hierarchical structure, from low level features to high level features, to make classification.
