@@ -74,7 +74,7 @@ As a last step, I normalized the image data because normalization is a standard 
 
 I decided to generate additional data because more data can help reduce overfitting and increase the overall prediction accuracy.
 
-To add more data to the the data set, I referred to [Yann Lecun's paper](http://yann.lecun.com/exdb/publis/pdf/sermanet-ijcnn-11.pdf) which is recommended above and used the following 3 image augmentation methods:
+To add more data to the the data set, I referred to [Yann Lecun's paper](http://yann.lecun.com/exdb/publis/pdf/sermanet-ijcnn-11.pdf) which is recommended in the instruction and used the following 3 image augmentation methods:
 
 * Translation (randomly translate the image left/right and up/down in the range of [-2, +2] pixels)
 * Rotation (randomly rotate the image in the range of [-10, +10] degrees)
