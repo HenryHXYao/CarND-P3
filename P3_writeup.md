@@ -18,9 +18,10 @@ The goals / steps of this project are the following:
 [//]: # (Image References)
 
 [image1]: ./images_output/train.png "Visualization"
-[image2]: ./images_output/grayscale.png "Grayscaling"
-[image3]: ./images_output/data_augmentation.png "data augmentation"
-[image4]: ./images_output/tested_signs.png "Traffic Sign sample"
+[image2]: ./images_output/distribution.JPG "distribution"
+[image3]: ./images_output/grayscale.png "Grayscaling"
+[image4]: ./images_output/data_augmentation.png "data augmentation"
+[image5]: ./images_output/tested_signs.png "Traffic Sign sample"
 
 ## Rubric Points
 ### Here I will consider the [rubric points](https://review.udacity.com/#!/rubrics/481/view) individually and describe how I addressed each point in my implementation.  
@@ -55,6 +56,7 @@ One image in the train set is:
 
 The following image shows the distribution of classes in the training, validation and test set:
 
+![alt text][image2]
 
 ### Design and Test a Model Architecture
 
@@ -64,7 +66,7 @@ As a first step, I decided to convert the images to grayscale because this appro
 
 Here is an example of a traffic sign image before and after grayscaling.
 
-![alt text][image2]
+![alt text][image3]
 
 As a last step, I normalized the image data because normalization is a standard procedure for data preprocessing.
 
@@ -78,7 +80,7 @@ To add more data to the the data set, I referred to [Yann Lecun's paper](http://
 
 Here is an example of an original image and an augmented image:
 
-![alt text][image3]
+![alt text][image4]
 
 8 fake images were generated for each image in the training set, therefore, the size of the augmented data set was 9 times of the original data set.
 
@@ -130,7 +132,7 @@ An iterative approach was chosen to improve the model:
 
 Here are 8 German traffic signs that I found on the web:
 
-![alt text][image4]
+![alt text][image5]
 
 The 5th image might be difficult to classify because there is a pole in front of the sign.
 
