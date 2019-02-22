@@ -48,6 +48,7 @@ signs data set:
 #### 2. Include an exploratory visualization of the dataset.
 
 Here is an exploratory visualization of the data set. 
+
 ![alt text][image1]
 
 ### Design and Test a Model Architecture
