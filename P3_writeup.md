@@ -20,7 +20,7 @@ The goals / steps of this project are the following:
 [image1]: ./images_output/train.png "Visualization"
 [image2]: ./images_output/grayscale.png "Grayscaling"
 [image3]: ./images_output/data_augmentation.png "data augmentation"
-[image4]: ./images_output/tested_signs.png "Traffic Sign 1"
+[image4]: ./images_output/tested_signs.png "Traffic Sign sample"
 
 ## Rubric Points
 ### Here I will consider the [rubric points](https://review.udacity.com/#!/rubrics/481/view) individually and describe how I addressed each point in my implementation.  
@@ -65,7 +65,7 @@ As a last step, I normalized the image data because normalization is a standard 
 
 I decided to generate additional data because more data can help reduce overfitting and increase the overall prediction accuracy.
 
-To add more data to the the data set, I I refer to [Yann Lecun's paper](http://yann.lecun.com/exdb/publis/pdf/sermanet-ijcnn-11.pdf) which is recommended above and use the following 3 image augmentation methods:
+To add more data to the the data set, I referred to [Yann Lecun's paper](http://yann.lecun.com/exdb/publis/pdf/sermanet-ijcnn-11.pdf) which is recommended above and use the following 3 image augmentation methods:
 
 * Translation (randomly translate the image left/right and up/down in the range of [-2, +2] pixels)
 * Rotation (randomly rotate the image in the range of [-10, +10] degrees)
@@ -75,7 +75,7 @@ Here is an example of an original image and an augmented image:
 
 ![alt text][image3]
 
-8 fake images are generated for each image in the training set, therefore, the size of the augmented data set is 9 times of the original data set.
+8 fake images were generated for each image in the training set, therefore, the size of the augmented data set was 9 times of the original data set.
 
 
 #### 2. Describe what your final model architecture looks like including model type, layers, layer sizes, connectivity, etc.) Consider including a diagram and/or table describing the final model.
@@ -119,7 +119,6 @@ An iterative approach was chosen to improve the model:
 * Which parameters were tuned? How were they adjusted and why?
 * What are some of the important design choices and why were they chosen? For example, why might a convolution layer work well with this problem? How might a dropout layer help with creating a successful model?
  
-
 ### Test a Model on New Images
 
 #### 1. Choose five German traffic signs found on the web and provide them in the report. For each image, discuss what quality or qualities might be difficult to classify.
