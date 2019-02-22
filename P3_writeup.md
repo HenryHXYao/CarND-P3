@@ -87,15 +87,22 @@ My final model is a modified version of LeNet-5 which consisted of the following
 | Layer         		|     Description	        					| 
 |:---------------------:|:---------------------------------------------:| 
 | Input         		| 32x32x1 gray normalized image   							| 
-| Convolution 3x3     	| 1x1 stride, valid padding, outputs 32x32x64 	|
+| Convolution 5x5     	| 80 filters, 1x1 stride, valid padding, outputs 28x28x80 	|
 | RELU					|												|
-| Max pooling	      	| 2x2 stride,  outputs 16x16x64 				|
-| Convolution 3x3	    | etc.      									|
+| Max pooling	      	| 2x2 stride,  outputs 14x14x80				|
+| Convolution 5x5	    | 80 filters, 1x1 stride, valid padding, outputs 10x10x80				|
+| RELU					|												|
+| Max pooling	      	| 2x2 stride,  outputs 5x5x80				|
+|Flatten |      Outputs 2000           |
+| Fully connected | ouptuts	120|
+| RELU					|												|
+| Dropout					|												|
+| Fully connected | ouptuts	84	|
+| RELU					|												|
+| Dropout					|												|
+| Fully connected | ouptuts	43	|
+| Softmax				| 			|
 
-| Fully connected		| etc.        									|
-| Softmax				| etc.        									|
-|						|												|
-|						|												|
  
 
 
