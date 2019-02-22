@@ -49,7 +49,12 @@ signs data set:
 
 Here is an exploratory visualization of the data set. 
 
+One image in the train set is:
+
 ![alt text][image1]
+
+The following image shows the distribution of classes in the training, validation and test set:
+
 
 ### Design and Test a Model Architecture
 
